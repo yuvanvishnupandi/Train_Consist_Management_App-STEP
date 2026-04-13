@@ -1,21 +1,31 @@
-import java.util.Arrays;
-
 public class ConsistManagementApp {
     public static void main(String[] args) {
-        // 1. Array of bogie type names
-        String[] bogieNames = {"Sleeper", "AC Chair", "First Class", "General", "Luxury"};
+        // List of bogie IDs in the consist (unsorted)
+        String[] consist = {"BG101", "BG205", "BG309", "BG412", "BG550"};
 
-        System.out.println("--- Train Consist Management: Bogie Name Sorting ---");
+        System.out.println("--- Train Consist Management: Linear Search ---");
+
+        // Test Case 1: Searching for an existing bogie
+        performSearch(consist, "BG309");
+
+        // Test Case 2: Searching for a non-existent bogie
+        performSearch(consist, "BG999");
+
+        // Test Case 3: First element match
+        performSearch(consist, "BG101");
         
-        // 2. Print unsorted list using Arrays.toString()
-        System.out.println("Unsorted Bogies: " + Arrays.toString(bogieNames));
+        System.out.println("------------------------------------------------");
+    }
 
-        // 3. Sort alphabetically using built-in library method
-        Arrays.sort(bogieNames);
-
-        // 4. Print the sorted result
-        System.out.println("Sorted Bogies:   " + Arrays.toString(bogieNames));
+    public static void performSearch(String[] array, String key) {
+        System.out.print("Searching for [" + key + "]... ");
         
-        System.out.println("----------------------------------------------------");
+        boolean found = BogieSearcher.linearSearch(array, key);
+        
+        if (found) {
+            System.out.println("RESULT: Bogie Found.");
+        } else {
+            System.out.println("RESULT: Bogie NOT Found.");
+        }
     }
 }
