@@ -1,30 +1,33 @@
 public class ConsistManagementApp {
     public static void main(String[] args) {
-        GoodsBogie cylindricalBogie = new GoodsBogie("G101", "Cylindrical");
-        GoodsBogie rectangularBogie = new GoodsBogie("G102", "Rectangular");
+        // Array representing passenger bogie capacities
+        int[] bogieCapacities = {72, 56, 24, 70, 60};
 
-        // Attempt 1: Safe assignment
-        processAssignment(cylindricalBogie, "Petroleum");
+        System.out.println("--- Train Consist Management: Capacity Sorting ---");
+        
+        // Display unsorted array
+        System.out.print("Unsorted Capacities: ");
+        printArray(bogieCapacities);
 
-        System.out.println("\n--- Next Assignment ---");
+        // Perform Bubble Sort (No library methods used!)
+        BogieSorter.bubbleSortCapacities(bogieCapacities);
 
-        // Attempt 2: UNSAFE assignment (Rectangular + Petroleum)
-        processAssignment(rectangularBogie, "Petroleum");
-
-        System.out.println("\nFinal Consist Report:");
-        System.out.println(cylindricalBogie.getStatus());
-        System.out.println(rectangularBogie.getStatus());
+        // Display sorted array
+        System.out.print("Sorted Capacities:   ");
+        printArray(bogieCapacities);
+        
+        System.out.println("--------------------------------------------------");
     }
 
-    public static void processAssignment(GoodsBogie bogie, String cargo) {
-        try {
-            bogie.assignCargo(cargo);
-        } catch (CargoSafetyException e) {
-            // This catches our custom exception
-            System.err.println("CATCH BLOCK: " + e.getMessage());
-        } finally {
-            // This always runs, whether it worked or failed
-            System.out.println("FINALLY BLOCK: Safety validation routine completed.");
+    // Helper method to display the array
+    public static void printArray(int[] arr) {
+        System.out.print("[");
+        for (int i = 0; i < arr.length; i++) {
+            System.out.print(arr[i]);
+            if (i < arr.length - 1) {
+                System.out.print(", ");
+            }
         }
+        System.out.println("]");
     }
 }
