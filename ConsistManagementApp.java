@@ -1,33 +1,21 @@
+import java.util.Arrays;
+
 public class ConsistManagementApp {
     public static void main(String[] args) {
-        // Array representing passenger bogie capacities
-        int[] bogieCapacities = {72, 56, 24, 70, 60};
+        // 1. Array of bogie type names
+        String[] bogieNames = {"Sleeper", "AC Chair", "First Class", "General", "Luxury"};
 
-        System.out.println("--- Train Consist Management: Capacity Sorting ---");
+        System.out.println("--- Train Consist Management: Bogie Name Sorting ---");
         
-        // Display unsorted array
-        System.out.print("Unsorted Capacities: ");
-        printArray(bogieCapacities);
+        // 2. Print unsorted list using Arrays.toString()
+        System.out.println("Unsorted Bogies: " + Arrays.toString(bogieNames));
 
-        // Perform Bubble Sort (No library methods used!)
-        BogieSorter.bubbleSortCapacities(bogieCapacities);
+        // 3. Sort alphabetically using built-in library method
+        Arrays.sort(bogieNames);
 
-        // Display sorted array
-        System.out.print("Sorted Capacities:   ");
-        printArray(bogieCapacities);
+        // 4. Print the sorted result
+        System.out.println("Sorted Bogies:   " + Arrays.toString(bogieNames));
         
-        System.out.println("--------------------------------------------------");
-    }
-
-    // Helper method to display the array
-    public static void printArray(int[] arr) {
-        System.out.print("[");
-        for (int i = 0; i < arr.length; i++) {
-            System.out.print(arr[i]);
-            if (i < arr.length - 1) {
-                System.out.print(", ");
-            }
-        }
-        System.out.println("]");
+        System.out.println("----------------------------------------------------");
     }
 }
